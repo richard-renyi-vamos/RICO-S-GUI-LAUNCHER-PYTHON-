@@ -1,0 +1,50 @@
+import tkinter as tk
+import webbrowser
+
+# Define the list of websites along with custom names
+websites = [
+    ("https://www.google.com", "Google"),
+    ("https://www.youtube.com", "YouTube"),
+    ("https://www.github.com", "GitHub"),
+    ("https://www.stackoverflow.com", "Stack Overflow"),
+    ("https://www.linkedin.com", "LinkedIn"),
+    ("https://www.twitter.com", "Twitter"),
+    ("https://www.nytimes.com", "NY Times"),
+    ("https://www.wikipedia.org", "Wikipedia"),
+    ("https://www.reddit.com", "Reddit"),
+    ("https://www.amazon.com", "Amazon"),
+    ("https://www.duolingo.com", "Duolingo"),
+    ("https://www.freecodecamp.org/", "FreeCodeCamp")
+]
+
+# Function to open a website
+def open_website(website_url):
+    webbrowser.open_new(website_url)
+
+# Create the main window
+root = tk.Tk()
+root.title("RICO'S GUI Launcher ☺")
+
+# Set the GUI size
+root.geometry("800x400")  # Adjust the size as needed
+
+# Load a custom image background from the desktop
+bg_image = tk.PhotoImage(file="C:/Users/RICO (new)/Desktop/custom_GUI_background.png")
+bg_label = tk.Label(root, image=bg_image)
+bg_label.place(relwidth=1, relheight=1)
+
+# Define custom font formatting
+custom_font = ("Helvetica", 14, "bold")
+
+# Create buttons for each website in three rows with light blue background
+for i, (website_url, website_name) in enumerate(websites):
+    row = i // 3  # Calculate the row for the button
+    col = i % 3   # Calculate the column for the button
+    
+    website_button = tk.Button(root, text=website_name, font=custom_font, bg="light blue",
+                               command=lambda url=website_url: open_website(url))
+    
+    website_button.grid(row=row, column=col, padx=10, pady=10)
+
+# Run the GUI main loop
+root.mainloop()
