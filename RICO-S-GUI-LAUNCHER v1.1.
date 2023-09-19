@@ -1,0 +1,40 @@
+import tkinter as tk
+import webbrowser
+
+# Define the list of useful websites
+websites = [
+    "https://www.google.com",
+    "https://www.youtube.com",
+    "https://www.github.com",
+    "https://www.stackoverflow.com",
+    "https://www.linkedin.com",
+    "https://www.twitter.com",
+    "https://www.nytimes.com",
+    "https://www.wikipedia.org",
+    "https://www.reddit.com",
+    "https://www.amazon.com"
+]
+
+# Function to open a website
+def open_website(website_url):
+    webbrowser.open_new(website_url)
+
+# Create the main window
+root = tk.Tk()
+root.title("RICO'S GUI launcher v. 1.1")
+
+# Set the GUI size
+root.geometry("800x800")
+
+# Load a custom image background
+bg_image = tk.PhotoImage(file="background.png")
+bg_label = tk.Label(root, image=bg_image)
+bg_label.place(relwidth=1, relheight=1)
+
+# Create buttons for each website
+for i, website_url in enumerate(websites):
+    website_button = tk.Button(root, text=f"Website {i+1}", command=lambda url=website_url: open_website(url))
+    website_button.pack(pady=20)
+
+# Run the GUI main loop
+root.mainloop()
