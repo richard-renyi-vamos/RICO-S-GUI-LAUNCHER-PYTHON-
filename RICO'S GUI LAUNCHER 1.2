@@ -1,0 +1,40 @@
+import tkinter as tk
+import webbrowser
+
+# Define the list of websites along with custom names
+websites = [
+    ("https://www.google.com", "Google"),
+    ("https://www.youtube.com", "YouTube"),
+    ("https://www.github.com", "GitHub"),
+    ("https://www.stackoverflow.com", "Stack Overflow"),
+    ("https://www.linkedin.com", "LinkedIn"),
+    ("https://www.twitter.com", "Twitter"),
+    ("https://www.nytimes.com", "NY Times"),
+    ("https://www.wikipedia.org", "Wikipedia"),
+    ("https://www.reddit.com", "Reddit"),
+    ("https://www.amazon.com", "Amazon")
+]
+
+# Function to open a website
+def open_website(website_url):
+    webbrowser.open_new(website_url)
+
+# Create the main window
+root = tk.Tk()
+root.title("Useful Websites")
+
+# Set the GUI size
+root.geometry("2000x2000")
+
+# Load a custom image background
+bg_image = tk.PhotoImage(file="background.png")
+bg_label = tk.Label(root, image=bg_image)
+bg_label.place(relwidth=1, relheight=1)
+
+# Create buttons for each website
+for i, (website_url, website_name) in enumerate(websites):
+    website_button = tk.Button(root, text=website_name, command=lambda url=website_url: open_website(url))
+    website_button.pack(pady=20)
+
+# Run the GUI main loop
+root.mainloop()
